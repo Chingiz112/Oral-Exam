@@ -1,0 +1,1106 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chingiz · California Oral Exam Master & Quiz</title>
+    <meta name="author" content="Chingiz" />
+    <meta name="copyright" content="Copyright © 2026 Chingiz. All Rights Reserved." />
+    <style>
+      :root {
+        --primary: #991b1b;
+        --accent: #d97706;
+        --bg: #070a10;
+        --card-bg: #0d121f;
+        --border: #1a2234;
+        --text: #f1f5f9;
+        --text-muted: #94a3b8;
+      }
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.5;
+        padding-bottom: 80px;
+      }
+      .container {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+      
+      /* TOP CHINGIZ HEADER */
+      .top-banner {
+        background: #05070c;
+        color: white;
+        padding: 12px 20px;
+        font-size: 13px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid #991b1b;
+      }
+      .top-banner .author-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        color: #fbbf24;
+        letter-spacing: 0.5px;
+      }
+
+      /* SEAL HERO */
+      .seal-hero {
+        background: #090e18;
+        border-bottom: 1px solid var(--border);
+        padding: 28px 0;
+        margin-bottom: 24px;
+      }
+      .seal-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 16px;
+      }
+      @media(min-width: 768px) {
+        .seal-card {
+          flex-direction: row;
+          text-align: left;
+          justify-content: space-between;
+        }
+      }
+      .seal-graphic {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #fef3c7, #fbbf24, #d97706);
+        border: 4px double #78350f;
+        box-shadow: 0 4px 15px rgba(217, 119, 6, 0.25);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 6px;
+        color: #451a03;
+        flex-shrink: 0;
+        position: relative;
+      }
+      .seal-graphic::after {
+        content: '';
+        position: absolute;
+        inset: 4px;
+        border: 1px dashed #78350f;
+        border-radius: 50%;
+      }
+      .seal-graphic .seal-star { font-size: 14px; color: #78350f; }
+      .seal-graphic .seal-name { font-size: 14px; font-weight: 800; letter-spacing: 1px; }
+      .seal-graphic .seal-tag { font-size: 8px; text-transform: uppercase; font-weight: 700; }
+
+      .hero-text h1 {
+        font-size: 26px;
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 1.2;
+      }
+      .hero-text p {
+        color: var(--text-muted);
+        font-size: 13px;
+        margin-top: 6px;
+        max-width: 620px;
+      }
+
+      /* NAV TABS */
+      .nav-tabs {
+        display: flex;
+        gap: 8px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 24px;
+        overflow-x: auto;
+        padding-bottom: 8px;
+      }
+      .nav-btn {
+        background: #0f1626;
+        border: 1px solid var(--border);
+        padding: 10px 18px;
+        font-size: 13px;
+        font-weight: 700;
+        border-radius: 8px;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.2s;
+        color: #cbd5e1;
+      }
+      .nav-btn:hover { background: #172033; color: #ffffff; }
+      .nav-btn.active {
+        background: #991b1b;
+        color: white;
+        border-color: #dc2626;
+      }
+
+      /* CARD STYLES */
+      .card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      }
+      .card-title {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: #ffffff;
+      }
+
+      /* QUIZ SPECIFICS */
+      .question-box {
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        line-height: 1.4;
+        color: #f8fafc;
+      }
+      .options-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .option-btn {
+        background: #0f1626;
+        border: 1px solid var(--border);
+        padding: 14px 18px;
+        border-radius: 8px;
+        font-size: 14px;
+        text-align: left;
+        cursor: pointer;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        transition: all 0.15s;
+        color: #cbd5e1;
+      }
+      .option-btn:hover { border-color: #dc2626; background: #172033; color: #ffffff; }
+      .option-btn.selected { border-color: #dc2626; background: #1a233a; font-weight: 600; color: #ffffff; }
+      .option-btn.correct { background: #064e3b !important; border-color: #10b981 !important; color: #a7f3d0 !important; font-weight: 700; }
+      .option-btn.wrong { background: #450a0a !important; border-color: #ef4444 !important; color: #fca5a5 !important; text-decoration: line-through; }
+      
+      .btn {
+        background: #991b1b;
+        color: white;
+        border: 1px solid #dc2626;
+        padding: 10px 18px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 13px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.15s;
+        text-decoration: none;
+      }
+      .btn:hover { background: #b91c1c; }
+      .btn-outline {
+        background: #0f1626;
+        color: #cbd5e1;
+        border: 1px solid var(--border);
+      }
+      .btn-outline:hover { background: #172033; color: #ffffff; border-color: #94a3b8; }
+
+      .explanation-box {
+        background: #0a0f1d;
+        border-left: 4px solid #dc2626;
+        padding: 14px;
+        border-radius: 0 8px 8px 0;
+        font-size: 13px;
+        margin-top: 16px;
+        display: none;
+        color: #cbd5e1;
+      }
+
+      /* STATS TILES */
+      .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 14px;
+        margin: 16px 0;
+      }
+      .stat-card {
+        background: #0f1626;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 16px;
+      }
+      .stat-num {
+        font-size: 20px;
+        font-weight: 800;
+        color: #fbbf24;
+      }
+      .stat-label {
+        font-size: 13px;
+        font-weight: 700;
+        color: #f1f5f9;
+        margin: 2px 0 6px 0;
+      }
+      .stat-desc {
+        font-size: 12px;
+        color: var(--text-muted);
+      }
+
+      /* TIMER */
+      .timer-display {
+        font-size: 48px;
+        font-family: monospace;
+        font-weight: 800;
+        color: #ef4444;
+        text-align: center;
+        padding: 16px;
+        background: #0a0f1d;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        margin: 16px 0;
+      }
+
+      /* TABLES */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 12px;
+      }
+      th, td {
+        border: 1px solid #1a2234;
+        padding: 10px 14px;
+        font-size: 13px;
+        text-align: left;
+      }
+      th {
+        background: #0a0e18;
+        color: #ffffff;
+      }
+      td {
+        background: #0d121f;
+        color: #cbd5e1;
+      }
+
+      /* SEAL FOOTER */
+      .official-seal-footer {
+        text-align: center;
+        padding: 40px 0 20px 0;
+        border-top: 1px solid var(--border);
+        margin-top: 50px;
+        color: #94a3b8;
+        font-size: 12px;
+      }
+      .official-seal-footer .seal-badge {
+        display: inline-block;
+        padding: 6px 16px;
+        border: 1px solid #d97706;
+        border-radius: 20px;
+        background: #1e1305;
+        color: #fcd34d;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      /* CINEMATIC OVERLAY */
+      .cinematic-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: #070a10;
+        color: #ffffff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        user-select: none;
+        transition: opacity 0.45s ease-out, transform 0.45s ease-out;
+      }
+      .cinematic-overlay.fade-out {
+        opacity: 0;
+        transform: scale(1.02);
+        pointer-events: none;
+      }
+      .cinematic-bar {
+        height: 60px;
+        background: #05070c;
+        border-bottom: 1px solid rgba(185, 28, 28, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 24px;
+        font-family: monospace;
+        font-size: 11px;
+        letter-spacing: 2px;
+        color: #dc2626;
+      }
+      .cinematic-bar-bottom {
+        border-bottom: none;
+        border-top: 1px solid rgba(185, 28, 28, 0.4);
+        color: #64748b;
+      }
+      .cinematic-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+        background: radial-gradient(circle at center, rgba(127, 29, 29, 0.2) 0%, rgba(7, 10, 16, 0.95) 70%, #070a10 100%);
+      }
+      .cinematic-title {
+        font-family: Impact, 'Arial Black', sans-serif;
+        color: #b91c1c;
+        font-size: clamp(32px, 7vw, 76px);
+        font-weight: 900;
+        text-transform: uppercase;
+        line-height: 1.05;
+        letter-spacing: 1px;
+        text-shadow: 0 4px 15px rgba(0, 0, 0, 0.95), 0 0 18px rgba(185, 28, 28, 0.45);
+        max-width: 900px;
+        margin-bottom: 12px;
+      }
+      .cinematic-sub {
+        font-family: Impact, 'Arial Black', sans-serif;
+        color: #991b1b;
+        font-size: clamp(20px, 4vw, 38px);
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9), 0 0 12px rgba(185, 28, 28, 0.35);
+        margin-bottom: 30px;
+      }
+      .cinematic-btn {
+        background: #7f1d1d;
+        color: #fef2f2;
+        font-weight: 900;
+        font-size: 15px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        padding: 16px 36px;
+        border: 2px solid #b91c1c;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        transition: all 0.2s;
+      }
+      .cinematic-btn:hover {
+        background: #991b1b;
+        box-shadow: 0 0 25px rgba(185, 28, 28, 0.5);
+        transform: scale(1.03);
+      }
+    </style>
+  <script src="/_aistudio-iframe.js?v=1f94f900"></script></head>
+  <body>
+    <!-- CINEMATIC INTRO OVERLAY -->
+    <div id="cinematic-intro" class="cinematic-overlay">
+      <div class="cinematic-bar">
+        <div>● TOP SECRET · MISSION DOSSIER 2026</div>
+        <button onclick="closeCinematicIntro()" style="background:transparent; border:1px solid #334155; color:#94a3b8; padding:4px 12px; font-family:monospace; cursor:pointer; font-size:11px;">[ SKIP INTRO / ESC ]</button>
+      </div>
+
+      <div class="cinematic-content">
+        <div style="font-family:monospace; font-size:12px; letter-spacing:4px; color:#f87171; margin-bottom:14px; font-weight:700;">
+          // OPERATION CALIFORNIA ORAL EXAM //
+        </div>
+        <h1 class="cinematic-title">
+          Ziel: Überlebe Mündliche Prüfung.
+        </h1>
+        <div class="cinematic-sub">
+          chingiz
+        </div>
+        <button class="cinematic-btn" onclick="closeCinematicIntro()">
+          MISSION STARTEN ➔
+        </button>
+        <div style="font-family:monospace; font-size:10px; color:#64748b; margin-top:14px; letter-spacing:2px;">
+          DRÜCKE [ ENTER ] ODER [ LEERTASTE ]
+        </div>
+      </div>
+
+      <div class="cinematic-bar cinematic-bar-bottom">
+        <div>PRÜFUNGSDATUM: MORGEN</div>
+        <div>ALL 6 TOPICS LOADED</div>
+        <div>STATUS: BEREIT</div>
+      </div>
+    </div>
+
+    <!-- TOP CHINGIZ HEADER -->
+    <header class="top-banner">
+      <div class="author-badge">
+        <span>★ PREPARED BY CHINGIZ</span>
+        <span>·</span>
+        <span>CALIFORNIA ORAL EXAM MASTER</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <button onclick="openCinematicIntro()" style="background:#7f1d1d; border:1px solid #ef4444; color:#fef2f2; padding:4px 10px; border-radius:4px; font-size:11px; font-weight:700; cursor:pointer;">
+          🎬 Intro
+        </button>
+        <span>© 2026 Chingiz · All Rights Reserved</span>
+      </div>
+    </header>
+
+    <!-- SEAL HERO -->
+    <section class="seal-hero">
+      <div class="container">
+        <div class="seal-card">
+          <div style="display:flex; align-items:center; gap:20px;">
+            <!-- Copyright Seal Graphic -->
+            <div class="seal-graphic">
+              <span class="seal-star">★ ★ ★</span>
+              <span class="seal-name">CHINGIZ</span>
+              <span class="seal-tag">OFFICIAL SEAL</span>
+              <span style="font-size:8px; font-weight:800; margin-top:2px;">© 2026</span>
+            </div>
+            <div class="hero-text">
+              <h1>California Oral Exam Study Master</h1>
+              <p>
+                Offizielles Prüfungskompendium & Interaktives Quiz von <strong>Chingiz</strong>.
+                Funktioniert 100% offline ohne Cookies oder Server! Alle 6 Handouts für deine morgige Prüfung.
+              </p>
+            </div>
+          </div>
+          <div>
+            <button class="btn" onclick="window.print()">
+              🖨️ Drucken / PDF
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+      <!-- Navigation Tabs -->
+      <nav class="nav-tabs">
+        <button class="nav-btn active" data-tab="quiz" onclick="switchTab('quiz')">📝 Interaktives Quiz (18 Fragen)</button>
+        <button class="nav-btn" data-tab="stats" onclick="switchTab('stats')">📊 Alle Zahlen & Statistiken (6 Themen)</button>
+        <button class="nav-btn" data-tab="study" onclick="switchTab('study')">📖 Lernzettel (Alle 6 Handouts)</button>
+        <button class="nav-btn" data-tab="oral" onclick="switchTab('oral')">🎙️ Mündliche Prüfung (2-Min-Timer)</button>
+      </nav>
+
+      <!-- ==================== TAB 1: QUIZ ==================== -->
+      <section id="tab-quiz">
+        <div class="card">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+            <div style="font-size:13px; font-weight:700; color:#64748b;">
+              FRAGE <span id="q-current">1</span> VON <span id="q-total">18</span>
+              <span style="margin:0 8px;">·</span>
+              <span id="q-topic" style="color:#d97706;">Topic</span>
+            </div>
+            <div style="font-size:13px; font-weight:700; color:#0f172a;">
+              Punkte: <span id="quiz-score">0</span>
+            </div>
+          </div>
+
+          <div class="question-box" id="question-text">
+            Lade Frage...
+          </div>
+          <div style="font-size:12px; color:#64748b; font-style:italic; margin-bottom:14px;" id="question-subtext"></div>
+
+          <div class="options-grid" id="options-container">
+            <!-- Rendered by JS -->
+          </div>
+
+          <div class="explanation-box" id="explanation-box">
+            <strong>Erklärung: </strong><span id="explanation-text"></span>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:20px; border-top:1px solid #e2e8f0; padding-top:16px;">
+            <button class="btn btn-outline" onclick="speakCurrentQuestion()">
+              🔊 Vorlesen (Englisch)
+            </button>
+            <button class="btn" id="next-btn" onclick="nextQuestion()" style="display:none;">
+              Nächste Frage ➔
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 2: STATS ==================== -->
+      <section id="tab-stats" style="display:none;">
+        <div class="card">
+          <h2 class="card-title">Die wichtigsten Zahlen & Fakten für deine mündliche Prüfung (Alle 6 Themen)</h2>
+          <p style="font-size:13px; color:#64748b; margin-bottom:20px;">
+            Präge dir diese Zahlen ein! Lehrer lieben es, wenn Schüler konkrete Daten zitieren können:
+          </p>
+
+          <h3 style="font-size:15px; font-weight:800; color:#4338ca; margin-top:12px;">★ Gangs & The Rich-Poor Divide</h3>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <div class="stat-num">17.7% Armutsquote</div>
+              <div class="stat-label">Kalifornien 2024 (~7 Mio. Menschen)</div>
+              <div class="stat-desc">Ca. 1 von 6 Menschen kann Grundbedürfnisse nicht decken. Platz 1 in den USA.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">11 zu 1 Ratio</div>
+              <div class="stat-label">Einkommenskluft ($356k vs. $33k)</div>
+              <div class="stat-desc">Topverdiener verdienen 11-mal so viel wie die Untergrenze.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">19% Leistbarkeit</div>
+              <div class="stat-label">Durchschnittshaus ($916,750)</div>
+              <div class="stat-desc">Nur 19% der Haushalte können sich ein Haus in CA leisten (USA: 40%).</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">70,000 Fabrikjobs</div>
+              <div class="stat-label">Verlust in South Central LA</div>
+              <div class="stat-desc">Führte 1992 zu bis zu 50% Arbeitslosigkeit bei schwarzen Bewohnern.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">31.5% Rückgang</div>
+              <div class="stat-label">Oakland Ceasefire Erfolg</div>
+              <div class="stat-desc">Waffengewalt sank durch Life-Coaches auf Rekordtief von 57 Morden 2025.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">187,000 Obdachlose</div>
+              <div class="stat-label">Rekordhoch in Kalifornien 2024</div>
+              <div class="stat-desc">Verursacht durch extreme Mietpreise und Wohnungsknappheit.</div>
+            </div>
+          </div>
+
+          <h3 style="font-size:15px; font-weight:800; color:#b45309; margin-top:24px;">1. Natural Disasters</h3>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <div class="stat-num">7.9 Magnitude</div>
+              <div class="stat-label">1906 San Francisco Earthquake</div>
+              <div class="stat-desc">Zerstörte über 80% der Stadt San Francisco.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">153,336 Acres</div>
+              <div class="stat-label">2018 Camp Fire Waldfläche</div>
+              <div class="stat-desc">Größtes und tödlichstes Feuer Nordkaliforniens.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">$16.5 Billion</div>
+              <div class="stat-label">Camp Fire Gesamtschaden</div>
+              <div class="stat-desc">Wirtschaftlicher Schaden allein durch das Camp Fire.</div>
+            </div>
+          </div>
+
+          <h3 style="font-size:15px; font-weight:800; color:#7c3aed; margin-top:24px;">2. California Music Scene</h3>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <div class="stat-num">125,000 / Tag</div>
+              <div class="stat-label">Coachella Besucher täglich</div>
+              <div class="stat-desc">Über 250.000 Besucher an jedem Festival-Wochenende.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">Über $51 Billion</div>
+              <div class="stat-label">Wirtschaftsleistung der CA-Musik</div>
+              <div class="stat-desc">Umsatz der Musikindustrie in Kalifornien.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">27 Grammys</div>
+              <div class="stat-label">Kendrick Lamar Rekord</div>
+              <div class="stat-desc">Meistprämierter Rapper in der Grammy-Geschichte.</div>
+            </div>
+          </div>
+
+          <h3 style="font-size:15px; font-weight:800; color:#e11d48; margin-top:24px;">3. Hollywood Film Industry</h3>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <div class="stat-num">Unter 1%</div>
+              <div class="stat-label">Erfolgsquote für Schauspieler</div>
+              <div class="stat-desc">Von allen, die nach Kalifornien ziehen, schaffen es weniger als 1%.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">6,300 Jobs</div>
+              <div class="stat-label">Schauspieljobs pro Jahr</div>
+              <div class="stat-desc">Nur so wenige Personen erhalten formelle Schauspielrollen.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">$48.63 / Stunde</div>
+              <div class="stat-label">Durchschnittlicher Stundenlohn</div>
+              <div class="stat-desc">Durchschnittsverdienst für Schauspieler in Hollywood.</div>
+            </div>
+          </div>
+
+          <h3 style="font-size:15px; font-weight:800; color:#0284c7; margin-top:24px;">4. California Tourism</h3>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <div class="stat-num">$158.9 Billion</div>
+              <div class="stat-label">Visitor Spending (2025)</div>
+              <div class="stat-desc">Direkte Touristenausgaben für Hotels, Gastronomie und Touren.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">1.2 Million Jobs</div>
+              <div class="stat-label">Arbeitsplätze im Tourismus</div>
+              <div class="stat-desc">Einer der größten Arbeitgeber des Bundesstaates.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">4,278,413</div>
+              <div class="stat-label">Besucher im Yosemite Park</div>
+              <div class="stat-desc">Beweist die immense Bedeutung des Naturtourismus.</div>
+            </div>
+          </div>
+
+          <h3 style="font-size:15px; font-weight:800; color:#059669; margin-top:24px;">5. California Sports</h3>
+          <div class="stat-grid">
+            <div class="stat-card">
+              <div class="stat-num">840 Meilen</div>
+              <div class="stat-label">Pazifikküste für Surfen</div>
+              <div class="stat-desc">Surfen ist der Sport mit der stärksten kulturellen Verbindung.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">9 Titel / 4 Mio. Fans</div>
+              <div class="stat-label">LA Dodgers Meisterschaften & Fans</div>
+              <div class="stat-desc">9 World Series Siege und über 4 Millionen Zuschauer im Stadion.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-num">17 & 7 NBA Titel</div>
+              <div class="stat-label">Lakers & Warriors</div>
+              <div class="stat-desc">LA Lakers (17 Meisterschaften) und Golden State Warriors (7 Titel).</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 3: STUDY NOTES ==================== -->
+      <section id="tab-study" style="display:none;">
+        <div class="card" style="border-left: 4px solid #4338ca;">
+          <h2 class="card-title" style="color:#4338ca;">★ Handout 6: Gangs & the Rich-Poor Divide (Class 9c)</h2>
+          <ul style="margin-left:20px; font-size:14px; color:#334155; line-height:1.7;">
+            <li><strong>Ursprung & Geschichte:</strong> Erste mexikanisch-amerikanische Gangs entstanden um 1920 in LA. Nach dem Zweiten Weltkrieg zogen viele schwarze Familien nach LA. Durch <strong>Redlining</strong> durften sie in den meisten Vororten keine Häuser kaufen und wurden in überfüllte Viertel gedrängt.</li>
+            <li><strong>Deindustrialisierung:</strong> In den 70ern/80ern gingen in South Central LA über 70.000 Fabrikjobs verloren. 1992 lag die Arbeitslosigkeit schwarzer Bewohner dort bei bis zu 50%.</li>
+            <li><strong>Hotspots & Differenzierung:</strong> Los Angeles (South LA, East LA) und Oakland (2012 waren &lt;1% der Bewohner für 2/3 der Waffengewalt verantwortlich). <em>Wichtig: Die allermeisten Bewohner dieser Viertel haben nichts mit Gangs zu tun!</em></li>
+            <li><strong>Ursachen:</strong> Armut, fehlende Jobs, familiäre Probleme. <em>Poverty is a risk factor, not a rule.</em></li>
+            <li><strong>Die Schere zwischen Arm und Reich:</strong> Ein Haus kostet in CA im Median 916.750 $ (nur 19% können es sich leisten vs. 40% in den USA). 17,7% Armutsquote (7 Mio. Menschen, Platz 1 in den USA). 187.000 Obdachlose.</li>
+            <li><strong>Lösungen & Hilfsprogramme:</strong>
+              <br>• <strong>Homeboy Industries (LA, 1988):</strong> Weltweit größtes Aussteigerprogramm (Jobtraining, Tattoo-Entfernung, psychologische Hilfe).
+              <br>• <strong>Oakland Ceasefire (2012):</strong> Life-Coaches für Hochrisikopersonen. Morde sanken um 31,5% auf Rekordtief von 57 Morden im Jahr 2025.
+              <br>• <strong>LA GRYD (2007):</strong> Streetworker zur Deeskalation von Straßenkonflikten.
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">Handout 1: Natural Disasters in California</h2>
+          <ul style="margin-left:20px; font-size:14px; color:#334155; line-height:1.7;">
+            <li><strong>San Andreas Fault:</strong> 800 Meilen lange Transformstörung. Pazifische Platte (~5 cm/Jahr Nordwesten) reibt an Nordamerikanischer Platte (Südosten).</li>
+            <li><strong>Primary Hazards:</strong> Earthquakes (höchster Verlust an Menschenleben in CA) & Wildfires (am häufigsten im heißen Herbst durch Santa-Ana-Winde).</li>
+            <li><strong>Secondary Hazards:</strong> Mudslides (Schlammlawinen auf Burn Scars) & Dürren.</li>
+            <li><strong>Alltag:</strong> Retrofitting, ShakeAlert-Smartphone-App, 72-Stunden-Kits, Power Shutoffs.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">Handout 2: California Music Scene</h2>
+          <ul style="margin-left:20px; font-size:14px; color:#334155; line-height:1.7;">
+            <li><strong>G-Funk:</strong> 80er/90er in LA/Long Beach, langsame tiefe Basslines (Dr. Dre, Snoop Dogg, Kendrick Lamar mit 27 Grammys).</li>
+            <li><strong>Skate Punk & Surf Rock:</strong> Green Day, Blink-182, Beach Boys ("California Sound").</li>
+            <li><strong>Red Hot Chili Peppers:</strong> Punk + Funk Verschmelzung (*Californication* mit 16 Mio. Verkäufen).</li>
+            <li><strong>Mode & Lifestyle:</strong> Vans, Stüssy, Baggy Pants, David Fincher Musikvideos, Coachella (125k Besucher/Tag).</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">Handout 3: Hollywood & The Film Industry</h2>
+          <ul style="margin-left:20px; font-size:14px; color:#334155; line-height:1.7;">
+            <li><strong>Warum Hollywood?</strong> Ganzjähriger Sonnenschein, Meer, Wüste und Berge direkt vor Ort.</li>
+            <li><strong>Walk of Fame & Hollywood Sign:</strong> 1958 gegründet, >2.800 Sterne ($85.000 Gebühr, 5+ Jahre Erfahrung). Schild 1923 als "HOLLYWOODLAND".</li>
+            <li><strong>Die Schattenseite:</strong> Filme wie *Sunset Boulevard* & *La La Land*. Unter 1% schaffen es als Schauspieler; Marilyn Monroe (1926-1962).</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">Handout 4: California Tourism</h2>
+          <ul style="margin-left:20px; font-size:14px; color:#334155; line-height:1.7;">
+            <li><strong>Top-Ziele:</strong> San Francisco (Golden Gate Bridge, Alcatraz), Yosemite National Park (4,28 Mio. Besucher), Los Angeles, Pazifikküste.</li>
+            <li><strong>5 Tourismusarten:</strong> Natur, Stadt, Strand, Kultur und Freizeitparks (Disneyland, Universal).</li>
+            <li><strong>Wirtschaft:</strong> 158,9 Milliarden Dollar Ausgaben und 1,2 Millionen Arbeitsplätze.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">Handout 5: California Sports</h2>
+          <ul style="margin-left:20px; font-size:14px; color:#334155; line-height:1.7;">
+            <li><strong>LeBron James:</strong> LA Lakers, NBA Champion 2020, Allzeit-Punkterekordhalter seit 2023.</li>
+            <li><strong>Surfen:</strong> 840 Meilen Küste, George Freeth (Hawaii), Hobart Alter Schaumstoff-Boards, Beach Boys & Film *Gidget*.</li>
+            <li><strong>Teams & Titel:</strong> LA Lakers (17 Titel), Warriors (7), SF 49ers (5 Super Bowls), Dodgers (9 World Series Titel & 4 Mio. Fans).</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ==================== TAB 4: ORAL EXAM ==================== -->
+      <section id="tab-oral" style="display:none;">
+        <div class="card">
+          <h2 class="card-title">Mündliche Prüfungssimulation (2 Minuten Vortrag)</h2>
+          <p style="font-size:13px; color:#64748b; margin-bottom:16px;">
+            Wähle eine Prüfungsaufgabe, drücke auf <strong>Start</strong> und sprich 2 Minuten frei auf Englisch laut vor dich hin!
+          </p>
+
+          <div style="background:#e0e7ff; border:1px solid #c7d2fe; padding:14px; border-radius:8px; margin-bottom:16px; font-size:13px; color:#312e81;">
+            <strong>Prüfungsaufgabe: </strong>"Explain the socio-economic causes behind gang formation in California (such as redlining and lost factory jobs), discuss the wealth gap, and present positive solutions like Homeboy Industries and Oakland Ceasefire."
+          </div>
+
+          <div class="timer-display" id="timer-text">02:00</div>
+
+          <div style="display:flex; justify-content:center; gap:12px; margin-bottom:20px;">
+            <button class="btn" id="timer-toggle-btn" onclick="toggleTimer()">▶ Starten</button>
+            <button class="btn btn-outline" onclick="resetTimer()">↺ Reset (2 Min)</button>
+          </div>
+
+          <h3 style="font-size:14px; font-weight:700; margin-top:20px; margin-bottom:8px;">Wichtige Überleitungen (Linking Phrases):</h3>
+          <div style="display:flex; flex-wrap:wrap; gap:6px; font-size:12px;">
+            <span style="background:#f1f5f9; padding:4px 10px; border-radius:4px; border:1px solid #e2e8f0;">"Today, I would like to examine..."</span>
+            <span style="background:#f1f5f9; padding:4px 10px; border-radius:4px; border:1px solid #e2e8f0;">"Historically, housing discrimination like redlining..."</span>
+            <span style="background:#f1f5f9; padding:4px 10px; border-radius:4px; border:1px solid #e2e8f0;">"During the 1970s, deindustrialization wiped out..."</span>
+            <span style="background:#f1f5f9; padding:4px 10px; border-radius:4px; border:1px solid #e2e8f0;">"Poverty is a risk factor, not an inevitable rule..."</span>
+            <span style="background:#f1f5f9; padding:4px 10px; border-radius:4px; border:1px solid #e2e8f0;">"Constructive programs like Homeboy Industries and Oakland Ceasefire..."</span>
+          </div>
+
+          <div style="margin-top:24px; border-top:1px solid #e2e8f0; padding-top:16px;">
+            <button class="btn btn-outline" onclick="speakModelSpeech()">
+              🔊 Muster-Vortrag auf Englisch vorlesen
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- OFFICIAL SEAL FOOTER -->
+      <footer class="official-seal-footer">
+        <div class="seal-badge">
+          ★ OFFICIAL COPYRIGHT SEAL OF EXCELLENCE ★
+        </div>
+        <div>
+          <strong>Prepared & Verified by Chingiz</strong>
+        </div>
+        <div style="margin-top:4px;">
+          Copyright © 2026 Chingiz · All Rights Reserved · California Oral Exam Study Master
+        </div>
+      </footer>
+    </main>
+
+    <!-- SCRIPT DATA & LOGIC -->
+    <script>
+      var questions = [
+        {
+          topic: "Gangs & Wealth Gap",
+          q: "What was 'redlining' in California, and what was its impact on Black families after WWII?",
+          sub: "Was war Redlining und welche Auswirkung hatte es auf schwarze Familien?",
+          opts: ["A government subsidy for new cars", "A discriminatory practice that barred Black families from buying homes in most areas, keeping them crowded", "A mandatory police curfew in suburban districts", "A free subway line in downtown LA"],
+          correct: 1,
+          exp: "Redlining barred Black families from buying homes in most suburban areas, legally confining them to segregated, overcrowded neighborhoods."
+        },
+        {
+          topic: "Gangs & Wealth Gap",
+          q: "How many manufacturing factory jobs were lost in South Central LA in the 1970s and 80s?",
+          sub: "Wie viele Fabrikjobs gingen in South Central LA in den 70ern/80ern verloren?",
+          opts: ["5,000 jobs", "20,000 jobs", "More than 70,000 jobs (unemployment soared to 50% in 1992)", "150,000 jobs"],
+          correct: 2,
+          exp: "South Central LA lost over 70,000 factory jobs, leading to unemployment among Black residents as high as 50% in 1992."
+        },
+        {
+          topic: "Gangs & Wealth Gap",
+          q: "What was California's poverty rate in 2024, and how does it rank in the United States?",
+          sub: "Wie hoch war die Armutsquote in Kalifornien 2024?",
+          opts: ["8.2%, lowest in the country", "12.5%, average in the US", "17.7% (~7 million people), tied for highest in the U.S.", "28.0%, highest in the world"],
+          correct: 2,
+          exp: "17.7% of Californians (about 7 million people) lived in poverty in 2024, tied for the highest rate in the U.S."
+        },
+        {
+          topic: "Gangs & Wealth Gap",
+          q: "What is the ratio between top earners and lowest earners in California (2024)?",
+          sub: "Wie groß ist die Einkommenskluft (Topverdiener vs. Geringverdiener)?",
+          opts: ["3 to 1 ($100k vs $33k)", "6 to 1 ($200k vs $33k)", "11 to 1 ($356,000 vs. $33,000)", "25 to 1 ($800k vs $33k)"],
+          correct: 2,
+          exp: "Top earners in California earn 11 times more than bottom earners ($356,000 vs. $33,000)."
+        },
+        {
+          topic: "Gangs & Wealth Gap",
+          q: "How much did gun murders drop in Oakland because of the Ceasefire program?",
+          sub: "Um wie viel sanken die Tötungsdelikte in Oakland durch das Ceasefire-Programm?",
+          opts: ["5%", "15%", "31.5% (reaching a record low of 57 murders in 2025)", "Gun murders did not change"],
+          correct: 2,
+          exp: "Oakland Ceasefire reduced gun murders by 31.5% by offering life coaches and support to high-risk individuals."
+        },
+        {
+          topic: "Gangs & Wealth Gap",
+          q: "What is Homeboy Industries in Los Angeles, founded in 1988?",
+          sub: "Was ist Homeboy Industries in Los Angeles?",
+          opts: ["A private security firm", "The largest gang rehabilitation program in the world, offering job training, tattoo removal and counseling", "A rap music record label", "A luxury housing developer"],
+          correct: 1,
+          exp: "Homeboy Industries gives former gang members job training, tattoo removal, and counseling, making it the biggest program of its kind."
+        },
+        {
+          topic: "Natural Disasters",
+          q: "Which natural disaster causes the highest total loss of life in California's history?",
+          sub: "Welche Naturkatastrophe forderte historisch die meisten Menschenleben?",
+          opts: ["Wildfires", "Earthquakes", "Tsunamis", "Mudslides"],
+          correct: 1,
+          exp: "Earthquakes cause the highest total loss of life in California history due to structural collapse along major fault ruptures."
+        },
+        {
+          topic: "Natural Disasters",
+          q: "What was the magnitude of the historic 1906 San Francisco Earthquake, and how much of the city was destroyed?",
+          sub: "Welche Magnitude hatte das Erdbeben von 1906 und wie viel wurde zerstört?",
+          opts: ["6.7 Magnitude, 35% destroyed", "7.9 Magnitude, over 80% destroyed", "8.5 Magnitude, 100% destroyed", "7.1 Magnitude, 50% destroyed"],
+          correct: 1,
+          exp: "The 1906 San Francisco earthquake registered 7.9 Magnitude and destroyed over 80% of the city."
+        },
+        {
+          topic: "Natural Disasters",
+          q: "What total economic damage was caused by the 2018 Camp Fire alone?",
+          sub: "Wie hoch war der geschätzte Schaden des Camp Fire 2018?",
+          opts: ["$5.2 Billion", "$9.8 Billion", "$16.5 Billion", "$28.0 Billion"],
+          correct: 2,
+          exp: "The 2018 Camp Fire burned 153,336 acres and caused an estimated $16.5 Billion in economic destruction."
+        },
+        {
+          topic: "Music Scene",
+          q: "What are the defining characteristics of West Coast Hip-Hop and G-Funk?",
+          sub: "Was zeichnet West Coast Hip-Hop und G-Funk musikalisch aus?",
+          opts: ["Acoustic banjos and fast country beats", "Slow, heavy basslines and melodic synthesizer sounds", "Heavy metal guitar distortion and screaming", "150 BPM rapid techno beats"],
+          correct: 1,
+          exp: "G-Funk, created in 1980s/90s LA & Long Beach by artists like Dr. Dre, is defined by slow, heavy basslines and synthesizers."
+        },
+        {
+          topic: "Music Scene",
+          q: "How many Grammy Awards does Kendrick Lamar hold, making him the most-awarded rapper in Grammy history?",
+          sub: "Wie viele Grammys hält Kendrick Lamar als Rekordhalter?",
+          opts: ["15 Grammys", "21 Grammys", "27 Grammys", "35 Grammys"],
+          correct: 2,
+          exp: "Kendrick Lamar holds the all-time record for rappers with 27 Grammy wins."
+        },
+        {
+          topic: "Hollywood",
+          q: "Why did the American film industry relocate and concentrate in Hollywood, California?",
+          sub: "Warum zog die US-Filmindustrie nach Hollywood?",
+          opts: ["Camera equipment was forbidden elsewhere", "Reliable climate & sunshine for outdoor filming and diverse natural scenery nearby", "Movie theaters were illegal on the East Coast", "Actors only spoke English in California"],
+          correct: 1,
+          exp: "Reliable sunshine allowed filming outdoors year-round, while mountains, deserts, and the ocean were all a short drive away."
+        },
+        {
+          topic: "Hollywood",
+          q: "What percentage of people who move to California to become actors actually make a career?",
+          sub: "Wie viel Prozent der Schauspiel-Hoffnungen schaffen es?",
+          opts: ["Less than 1%", "About 12%", "Around 25%", "Over 50%"],
+          correct: 0,
+          exp: "Less than 1% of aspiring actors who move to California actually achieve a sustainable career in Hollywood."
+        },
+        {
+          topic: "Tourism",
+          q: "How much visitor spending did tourism generate in California in 2025?",
+          sub: "Wie hoch waren die Touristenausgaben (Visitor Spending) 2025?",
+          opts: ["$45.2 Billion", "$95.0 Billion", "$158.9 Billion", "$280.0 Billion"],
+          correct: 2,
+          exp: "Visitor spending reached $158.9 Billion in 2025, directly supporting 1.2 Million hospitality and travel jobs."
+        },
+        {
+          topic: "Tourism",
+          q: "How many people visited Yosemite National Park according to the statistics?",
+          sub: "Wie viele Menschen besuchten laut Statistik den Yosemite-Park?",
+          opts: ["1,200,000", "2,450,000", "4,278,413", "8,900,000"],
+          correct: 2,
+          exp: "4,278,413 people visited Yosemite National Park, highlighting the immense demand for nature tourism."
+        },
+        {
+          topic: "Sports",
+          q: "Which sport is most intrinsically associated with California's culture and lifestyle?",
+          sub: "Welcher Sport ist am stärksten mit der kalifornischen Kultur verbunden?",
+          opts: ["Ice Hockey", "Surfing", "Baseball", "Golf"],
+          correct: 1,
+          exp: "Surfing, supported by 840 miles of coastline, George Freeth, Hobart Alter's modern boards, and the Beach Boys, is the quintessential California sport."
+        },
+        {
+          topic: "Sports",
+          q: "How many World Series titles have the Los Angeles Dodgers won?",
+          sub: "Wie viele World Series Titel gewannen die LA Dodgers?",
+          opts: ["3 titles", "5 titles", "9 titles", "15 titles"],
+          correct: 2,
+          exp: "The LA Dodgers have captured 9 World Series championships, drawing over 4 million fans to home games."
+        },
+        {
+          topic: "Sports",
+          q: "What milestone did LeBron James achieve with the Los Angeles Lakers in 2023?",
+          sub: "Welchen Meilenstein erreichte LeBron James 2023?",
+          opts: ["He retired from basketball", "He became the NBA's all-time leading scorer", "He won 5 MVP trophies in one year", "He became a movie director"],
+          correct: 1,
+          exp: "LeBron James won the 2020 NBA title with the Lakers and became the NBA's all-time leading scorer in 2023."
+        }
+      ];
+
+      var currentIdx = 0;
+      var score = 0;
+      var answered = false;
+
+      function renderQuestion() {
+        var item = questions[currentIdx];
+        document.getElementById('q-current').innerText = currentIdx + 1;
+        document.getElementById('q-total').innerText = questions.length;
+        document.getElementById('q-topic').innerText = item.topic;
+        document.getElementById('question-text').innerText = item.q;
+        document.getElementById('question-subtext').innerText = item.sub;
+        
+        var container = document.getElementById('options-container');
+        container.innerHTML = '';
+        answered = false;
+        document.getElementById('explanation-box').style.display = 'none';
+        document.getElementById('next-btn').style.display = 'none';
+
+        for (var i = 0; i < item.opts.length; i++) {
+          (function(idx) {
+            var btn = document.createElement('button');
+            btn.className = 'option-btn';
+            btn.innerHTML = '<span style="font-weight:700; width:22px; height:22px; border-radius:4px; background:#e2e8f0; display:inline-flex; align-items:center; justify-content:center; font-size:12px;">' + (idx + 1) + '</span> <span>' + item.opts[idx] + '</span>';
+            btn.onclick = function() { selectOption(idx); };
+            container.appendChild(btn);
+          })(i);
+        }
+      }
+
+      function selectOption(idx) {
+        if (answered) return;
+        answered = true;
+        var item = questions[currentIdx];
+        var buttons = document.querySelectorAll('.option-btn');
+
+        if (idx === item.correct) {
+          score += 10;
+          document.getElementById('quiz-score').innerText = score;
+          buttons[idx].classList.add('correct');
+        } else {
+          buttons[idx].classList.add('wrong');
+          buttons[item.correct].classList.add('correct');
+        }
+
+        document.getElementById('explanation-text').innerText = item.exp;
+        document.getElementById('explanation-box').style.display = 'block';
+        document.getElementById('next-btn').style.display = 'inline-flex';
+      }
+
+      function nextQuestion() {
+        if (currentIdx + 1 < questions.length) {
+          currentIdx++;
+          renderQuestion();
+        } else {
+          alert('Quiz beendet! Dein Endergebnis: ' + score + ' Punkte von ' + (questions.length * 10) + '! Super Leistung!');
+          currentIdx = 0;
+          score = 0;
+          document.getElementById('quiz-score').innerText = '0';
+          renderQuestion();
+        }
+      }
+
+      function speakCurrentQuestion() {
+        try {
+          if (window.speechSynthesis) {
+            window.speechSynthesis.cancel();
+            var q = questions[currentIdx];
+            var utter = new SpeechSynthesisUtterance(q.q + '. Options: ' + q.opts.join(', '));
+            utter.lang = 'en-US';
+            window.speechSynthesis.speak(utter);
+          }
+        } catch(e) {}
+      }
+
+      function speakModelSpeech() {
+        try {
+          if (window.speechSynthesis) {
+            window.speechSynthesis.cancel();
+            var speech = "When discussing gangs in California, it is essential to focus on historical causes, redlining, and economic inequality. Post-WWII housing discrimination restricted Black families to overcrowded areas. In the 1970s, South Central Los Angeles lost over 70,000 factory jobs, driving unemployment up to 50%. Today, California has a 17.7% poverty rate, the top earners make eleven times more than bottom earners, and only 19% can afford a median home. Poverty is a risk factor, not an inevitable rule, and positive solutions like Homeboy Industries and Oakland Ceasefire demonstrate that targeted support reduces gun violence.";
+            var utter = new SpeechSynthesisUtterance(speech);
+            utter.lang = 'en-US';
+            window.speechSynthesis.speak(utter);
+          }
+        } catch(e) {}
+      }
+
+      function switchTab(tabId) {
+        var sections = document.querySelectorAll('section[id^="tab-"]');
+        for (var i = 0; i < sections.length; i++) {
+          sections[i].style.display = 'none';
+        }
+        var target = document.getElementById('tab-' + tabId);
+        if (target) {
+          target.style.display = 'block';
+        }
+        var buttons = document.querySelectorAll('.nav-btn');
+        for (var j = 0; j < buttons.length; j++) {
+          if (buttons[j].getAttribute('data-tab') === tabId) {
+            buttons[j].classList.add('active');
+          } else {
+            buttons[j].classList.remove('active');
+          }
+        }
+      }
+
+      // TIMER LOGIC
+      var timerSeconds = 120;
+      var timerRunning = false;
+      var timerInterval = null;
+
+      function updateTimerDisplay() {
+        var m = Math.floor(timerSeconds / 60);
+        var s = timerSeconds % 60;
+        document.getElementById('timer-text').innerText = 
+          (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+      }
+
+      function toggleTimer() {
+        if (timerRunning) {
+          clearInterval(timerInterval);
+          timerRunning = false;
+          document.getElementById('timer-toggle-btn').innerText = '▶ Fortsetzen';
+        } else {
+          timerRunning = true;
+          document.getElementById('timer-toggle-btn').innerText = '⏸ Pause';
+          timerInterval = setInterval(function() {
+            if (timerSeconds > 0) {
+              timerSeconds--;
+              updateTimerDisplay();
+            } else {
+              clearInterval(timerInterval);
+              timerRunning = false;
+              alert('Zeit abgelaufen! Gut gesprochen!');
+              document.getElementById('timer-toggle-btn').innerText = '▶ Starten';
+            }
+          }, 1000);
+        }
+      }
+
+      function resetTimer() {
+        clearInterval(timerInterval);
+        timerRunning = false;
+        timerSeconds = 120;
+        updateTimerDisplay();
+        document.getElementById('timer-toggle-btn').innerText = '▶ Starten';
+      }
+
+      // CINEMATIC INTRO TOGGLE & KEYBOARD SHORTCUTS
+      function closeCinematicIntro() {
+        var el = document.getElementById('cinematic-intro');
+        if (el) {
+          el.classList.add('fade-out');
+          setTimeout(function() {
+            el.style.display = 'none';
+            el.classList.remove('fade-out');
+          }, 450);
+        }
+      }
+
+      function openCinematicIntro() {
+        var el = document.getElementById('cinematic-intro');
+        if (el) {
+          el.style.display = 'flex';
+        }
+      }
+
+      window.addEventListener('keydown', function(e) {
+        var el = document.getElementById('cinematic-intro');
+        if (el && el.style.display !== 'none') {
+          if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            closeCinematicIntro();
+          }
+        }
+      });
+
+      // Initial start
+      renderQuestion();
+    </script>
+  </body>
+</html>
